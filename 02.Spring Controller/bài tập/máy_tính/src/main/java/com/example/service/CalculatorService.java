@@ -1,4 +1,5 @@
 package com.example.service;
 
-public class CalculatorService {
+public interface CalculatorService {
+    int calculating(int num1, int num2, String operator);
 }

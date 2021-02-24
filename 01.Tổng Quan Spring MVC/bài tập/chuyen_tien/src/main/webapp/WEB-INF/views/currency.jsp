@@ -8,9 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Currency</title>
 </head>
 <body>
-$END$
+
+<form action="/convert" method="post">
+    <label>
+        USD:
+    </label>
+    <input type="text" name="usd">
+    <button type="submit">CHUYỂN ĐỔI</button>
+</form>
+<h1>Result : ${usd}</h1>
 </body>
 </html>

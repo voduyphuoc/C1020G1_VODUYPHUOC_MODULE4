@@ -1,4 +1,4 @@
 package com.example.service;
-public interface Dictionary {
+public interface DictionaryService {
     String search(String searchWord);
 }

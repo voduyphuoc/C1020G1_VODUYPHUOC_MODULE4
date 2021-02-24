@@ -1,9 +1,13 @@
 package com.example.service;
 
+import com.example.model.Dictionary;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class DictionaryImp implements Dictionary {
+public class DictionaryServiceImp implements DictionaryService {
     private static Map<Integer, Dictionary> dictionary = new HashMap<>();
     static {
         dictionary.put(1,new Dictionary("greeting","chào hỏi"));
@@ -19,6 +23,13 @@ public class DictionaryImp implements Dictionary {
     }
     @Override
     public String search(String searchWord) {
-        return null;
+        String result = null;
+        List<Dictionary> dictionaries = new ArrayList<>(dictionary.values());
+        for (int i=0;i<dictionaries.size();i++){
+            if (searchWord.equalsIgnoreCase(dictionaries.get(i).getVI())){
+                result = (dictionaries.get(i).getEN());
+            }
+        }
+        return result;
     }
 }

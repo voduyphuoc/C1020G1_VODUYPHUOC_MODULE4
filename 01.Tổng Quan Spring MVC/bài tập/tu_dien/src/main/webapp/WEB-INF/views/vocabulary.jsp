@@ -8,9 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Chuyển Đổi Từ Điển</title>
 </head>
 <body>
-$END$
+<form action="/convert" method="post" >
+    <label>Nhập từ cần tra cứu!</label>
+    <input type="text" name="searchWord">
+    <button type="submit"> tra cứu </button>
+</form>
+<h1>Result : ${result}</h1>
 </body>
 </html>

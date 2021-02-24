@@ -1,4 +1,5 @@
 package com.example.service;
 
-public interface Calcute {
+public interface Calculate {
+    double calculate(double  usd);
 }
