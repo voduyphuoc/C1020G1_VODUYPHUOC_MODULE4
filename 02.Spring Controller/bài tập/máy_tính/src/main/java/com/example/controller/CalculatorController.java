@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.service.CalculatorService;
 import com.example.service.CalculatorServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CalculatorController {
-    private CalculatorService calculatorService = new CalculatorServiceImp();
+    @Autowired
+    public CalculatorService calculatorService;
+
+//    private CalculatorService calculatorService = new CalculatorServiceImp();
     @GetMapping("/")
     public String getHome() {
         return "/index";
