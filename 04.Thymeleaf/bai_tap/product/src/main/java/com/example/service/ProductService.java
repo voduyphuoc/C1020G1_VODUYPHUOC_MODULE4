@@ -15,5 +15,4 @@ public interface ProductService {
 
     void remove(int id);
 
-    Product search(int id);
 }

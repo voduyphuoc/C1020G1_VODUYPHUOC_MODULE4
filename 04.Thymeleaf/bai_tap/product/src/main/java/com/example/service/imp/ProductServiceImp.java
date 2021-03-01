@@ -48,9 +48,4 @@ public class ProductServiceImp implements ProductService {
     public void remove(int id) {
         productMap.remove(id);
     }
-
-    @Override
-    public Product search(int id) {
-        return  productMap.get(id);
-    }
 }
