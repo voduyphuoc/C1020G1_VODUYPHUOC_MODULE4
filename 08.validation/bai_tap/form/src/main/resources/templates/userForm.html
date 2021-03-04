@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<form th:object="${user}" method="post" th:action="@{/userForm}">
+    <table align="center" border="1" cellpadding="5">
+        <tr>
+            <td>FirstName</td>
+            <td><input type="text" th:field="*{firstName}"></td>
+            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></td>
+        </tr>
+        <tr>
+            <td>LastName</td>
+            <td><input type="text" th:field="*{lastName}"></td>
+            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></td>
+        </tr>
+        <tr>
+            <td>PhoneNumber</td>
+            <td><input type="text" th:field="*{phoneNumber}"></td>
+            <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="text" th:field="*{age}"></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit">save</button></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
