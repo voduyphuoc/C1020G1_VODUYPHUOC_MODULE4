@@ -1,9 +1,4 @@
-package com.example.service;
+package com.example.service.imp;
 
-import com.example.model.User;
-import org.springframework.stereotype.Service;
-
-@Service
 public interface UserService {
-    void save(User user);
 }
