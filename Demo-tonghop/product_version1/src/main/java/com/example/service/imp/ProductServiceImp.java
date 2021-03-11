@@ -14,9 +14,13 @@ public class ProductServiceImp implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public List<Product> findAll() {
+    public List<Product> findAll(String name) {
+        if (name != null) {
+            return productRepository.searchName(name);
+        }
         return productRepository.findAll();
     }
+
 
     @Override
     public Product findById(Integer id) {
@@ -32,4 +36,5 @@ public class ProductServiceImp implements ProductService {
     public void remove(Integer id) {
         productRepository.deleteById(id);
     }
+
 }
