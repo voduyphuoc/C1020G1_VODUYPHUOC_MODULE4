@@ -22,6 +22,7 @@ public class ProductController {
         model.addAttribute("keyword",keyword);
         return "formProduct";
     }
+
     @RequestMapping("/new")
     public String showNewProduct(Model model){
         model.addAttribute("product",new Product());
