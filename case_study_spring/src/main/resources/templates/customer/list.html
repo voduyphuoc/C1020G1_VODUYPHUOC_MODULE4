@@ -15,8 +15,7 @@
             </button>
         </form>
 
-
-        <a th:href="@{/customer/create}">Create New Customer</a>
+        <a th:href="@{/customer/create}"><button> Create New Customer</button></a>
         <h2 th:if="${message}" th:text="${message}" style="color: green"></h2>
         <h2 th:if="${messageDelete}" th:text="${messageDelete}" style="color: red"></h2>
         <table class="table">
@@ -54,10 +53,7 @@
             </th:block>
             </tbody>
         </table>
-
         <div>
-
-
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item" th:if="${customerList.hasPrevious()}">
@@ -77,17 +73,6 @@
                 </ul>
             </nav>
 
-            <!--            <span th:if="${customerList.hasPrevious()}">-->
-            <!--        <a th:href="@{/customer(page=${customerList.number - 1},keyword = ${keywordOld},size=${customerList.size})}">Previous</a>-->
-            <!--            </span>-->
-            <!--            <th:block th:each="i: ${#numbers.sequence(0, customerList.totalPages - 1)}">-->
-            <!--                <span th:if="${customerList.number == i}" class="selected">[[${i}+1]]</span>-->
-            <!--                <span th:unless="${customerList.number == i}">-->
-            <!--             <a th:href="@{/customer(page=${i},size=${customerList.size},keyword = ${keywordOld})}">[[${i}+1]]</a></span>-->
-            <!--            </th:block>-->
-            <!--            <span th:if="${customerList.hasNext()}">-->
-            <!--        <a th:href="@{/customer(page=${customerList.number+1},keyword = ${keywordOld},size=${customerList.size})}">Next</a>-->
-            <!--    </span>-->
         </div>
     </div>
 </div>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract</title>
+</head>
+<body>
+<h1>Customer International</h1>
+<p th:text="'Id Contract : ' + ${contract.id}"></p>
+<p th:text="'start date : ' + ${contract.startDate}"></p>
+<p th:text="'end date : ' + ${contract.endDate}"></p>
+<p th:text="'deposit : ' + ${contract.deposit}"></p>
+<p th:text="'totalmoney : ' + ${contract.totalMoney}"></p>
+<p th:text="'name employee: ' + ${contract.employee.name}"></p>
+<p th:text="'name customer: ' + ${contract.customer.name}"></p>
+<a th:href="@{/contract}" class="btn btn-outline-primary">Back</a>
+</body>
+</html>

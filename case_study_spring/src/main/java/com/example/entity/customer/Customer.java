@@ -1,9 +1,12 @@
 package com.example.entity.customer;
 
+import com.example.entity.contract.Contract;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Entity(name = "customer")
 public class Customer {
@@ -43,6 +46,9 @@ public class Customer {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customer_type_id",referencedColumnName = "id")
     private CustomerType customerType;
+
+    @OneToMany(mappedBy = "customer")
+    List<Contract> contractList;
 
     public Customer() {
     }
@@ -130,4 +136,10 @@ public class Customer {
         this.customerType = customerType;
     }
 
+    public List<Contract> getContractList() {
+        return contractList;
+    }
+    public void setContractList(List<Contract> contractList) {
+        this.contractList = contractList;
+    }
 }

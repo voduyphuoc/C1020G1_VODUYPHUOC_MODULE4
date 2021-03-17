@@ -19,7 +19,7 @@ public class RentType {
     @Min(value = 0,message = "Number Format Exception and cost >=0!!!")
     private double cost;
     @OneToMany(mappedBy = "rentType")
-    List<Service> serviceList;
+    List<Services> serviceList;
 
     public RentType() {
     }
@@ -41,11 +41,11 @@ public class RentType {
         this.cost = cost;
     }
 
-    public List<Service> getServiceList() {
+    public List<Services> getServiceList() {
         return serviceList;
     }
 
-    public void setServiceList(List<Service> serviceList) {
+    public void setServiceList(List<Services> serviceList) {
         this.serviceList = serviceList;
     }
 

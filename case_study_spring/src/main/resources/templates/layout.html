@@ -96,13 +96,29 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false" >SERVICE</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/service}">SERVICE</a>
+                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/servive}">SERVICE</a>
                     <a class="dropdown-item" style="background: #4e555b" th:href="@{/serviceType}">SERVICE TYPE</a>
                     <a class="dropdown-item" style="background: #4e555b" th:href="@{/rentType}">RENT TYPE</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false" >EMPLOYEE</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/employee}">EMPLOYEE</a>
+                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/position}">POSITION</a>
+                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/division}">DIVISION</a>
+                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/educationdegree}">EDUCATION DEGREE</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false" >CONTRACT</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/contract}">CONTRACT</a>
+                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/position}">CONTRACT DETAIL</a>
+                    <a class="dropdown-item" style="background: #4e555b" th:href="@{/division}">ATTACH SERVICE</a>
+                </div>
             </li>
         </ul>
 
