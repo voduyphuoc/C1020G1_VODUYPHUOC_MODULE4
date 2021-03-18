@@ -10,10 +10,12 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search"
                    th:name="keyword">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="button" value="clear" onclick="clearEmployee()">Clear</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" value="clear" onclick="clearEmployee()">
+                Clear
+            </button>
         </form>
-        <h1 class="text-center"><a th:href="@{/employee}">Employee List</a></h1>
-        <a th:href="@{/employee/create}">Create New Employee</a>
+        <!--        <h1 class="text-center"><a th:href="@{/employee}">Employee List</a></h1>-->
+        <button><a th:href="@{/employee/create}">Create New Employee</a></button>
         <h2 th:if="${message}" th:text="${message}" style="color: green"></h2>
         <h2 th:if="${message1}" th:text="${message1}" style="color: red"></h2>
         <table class="table">
@@ -21,13 +23,9 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Birthday</th>
-                <th>Id Card</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>PositionId</th>
-                <th>EducationId</th>
-                <th>DivisionId</th>
+                <th>Position</th>
+                <th>Education</th>
+                <th>Division</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -37,17 +35,14 @@
                 <tr>
                     <td th:text="${employee.id}"></td>
                     <td><a th:href="@{employee/{id}/view(id=${employee.id})}" th:text="${employee.name}"></a></td>
-                    <td th:text="${employee.birthday}"></td>
-                    <td th:text="${employee.idCard}"></td>
-                    <td th:text="${employee.phone}"></td>
-                    <td th:text="${employee.email}"></td>
                     <td th:text="${employee.position.name}"></td>
                     <td th:text="${employee.educationDegree.name}"></td>
                     <td th:text="${employee.division.name}"></td>
                     <td><a th:href="@{/employee/{id}/update(id=${employee.id})}"
                            class="btn btn-outline-primary">Edit</a>
                     </td>
-                    <td><a th:data-id="${employee.id}" th:data-name="${employee.name}" data-toggle="modal" data-target="#modelId"
+                    <td><a th:data-id="${employee.id}" th:data-name="${employee.name}" data-toggle="modal"
+                           data-target="#modelId"
                            class="btn btn-outline-danger delete">Delete</a>
                     </td>
                 </tr>
@@ -55,21 +50,27 @@
             </tbody>
         </table>
 
-        <div class="pagination-div">
-    <span th:if="${employeeList.hasPrevious()}">
-        <a th:href="@{/employee(page=${employeeList.number - 1},keyword=${keywordOld},size=${employeeList.size})}">Previous</a>
-    </span>
-            <th:block th:each="i: ${#numbers.sequence(0, employeeList.totalPages - 1)}">
-                <span th:if="${employeeList.number == i}" class="selected">[[${i}+1]]</span>
-                <span th:unless="${employeeList.number == i}">
-             <a th:href="@{/employee(page=${i},size=${employeeList.size},keyword=${keywordOld})}">[[${i}+1]]</a>
-        </span>
-            </th:block>
-            <span th:if="${employeeList.hasNext()}">
-        <a th:href="@{/employee(page=${employeeList.number+1},keyword=${keywordOld},size=${employeeList.size})}">Next</a>
-    </span>
-        </div>
+        <div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" th:if="${employeeList.hasPrevious()}">
+                        <a class="page-link"
+                           th:href="@{/employee(page=${employeeList.number - 1},keyword = ${keywordOld},size=${employeeList.size})}">Previous</a>
+                    </li>
 
+                    <th:block th:each="i: ${#numbers.sequence(0, employeeList.totalPages - 1)}">
+                        <li class="page-link" th:if="${employeeList.number == i}">[[${i}+1]]</li>
+                        <li class="page-link" th:unless="${employeeList.number == i}">
+                            <a th:href="@{/employee(page=${i},size=${employeeList.size},keyword = ${keywordOld})}">[[${i}+1]]</a>
+                        </li>
+                    </th:block>
+                    <li class="page-item" th:if="${employeeList.hasNext()}">
+                        <a class="page-link"
+                           th:href="@{/customer(page=${employeeList.number+1},keyword = ${keywordOld},size=${employeeList.size})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
 
@@ -103,15 +104,15 @@
         let id = $(this).attr("data-id");
         let name = $(this).attr("data-name");
 
-        console.log("id là:"+id);
+        console.log("id là:" + id);
 
         $("#deleteId").val(id);
-        $("#messageModal").text(" Delete Employee : "+name);
+        $("#messageModal").text(" Delete Employee : " + name);
 
         $("#modelId").modal('show');
     })
-    
-    
+
+
     function clearEmployee() {
         window.location = '/employee';
     }

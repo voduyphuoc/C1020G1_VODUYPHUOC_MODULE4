@@ -30,7 +30,7 @@ public class EmployeeController {
     EducationDegreeService educationDegreeService;
 
     @GetMapping({"", "/list"})
-    public String listEmployee(Model model, @RequestParam Optional<String> keyword, @PageableDefault(value = 5) Pageable pageable) {
+    public String listEmployee(Model model, @RequestParam Optional<String> keyword, @PageableDefault(value = 3) Pageable pageable) {
         String keywordOld = "";
         if (!keyword.isPresent()) {
             model.addAttribute("employeeList", employeeService.findAll(pageable));
@@ -42,7 +42,6 @@ public class EmployeeController {
             return "/employee/list";
         }
     }
-
     @GetMapping("/create")
     public String showCreate(Model model) {
         model.addAttribute("positionList", positionService.findAll());

@@ -20,7 +20,6 @@ public class Services {
     @Min(value = 0,message = "Number Format Exception and Area >=0!!!")
     private String area;
 
-
     @NotEmpty(message = "Not null")
     private String cost;
 

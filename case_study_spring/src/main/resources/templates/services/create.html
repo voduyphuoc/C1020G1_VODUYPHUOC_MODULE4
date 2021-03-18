@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/index :: head}">
+</head>
+<body>
+<div class="container">
+    <h1>Create new Services</h1>
+    <form th:action="@{/services/save}" th:object="${services}" method="post" novalidate="novalidate">
+        <div class="form-group">
+            <label class="col-form-label col-2">Id</label>
+            <input class="form-control col-6" type="text" th:field="*{id}"/>
+            <label style="color: red" th:if="${messageId}" th:text="${messageId}"></label>
+            <label style="color: red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></label>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Name</label>
+            <input class="form-control col-6" type="text" th:field="*{name}"/>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Area</label>
+            <input class="form-control col-6" type="text" th:field="*{area}"/>
+            <label style="color: red" th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></label>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Cost</label>
+            <input class="form-control col-6" type="text" th:field="*{cost}"/>
+            <label style="color: red" th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}"></label>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Max People</label>
+            <input class="form-control col-6" type="text" th:field="*{maxPeople}"/>
+            <label style="color: red" th:if="${#fields.hasErrors('maxPeople')}" th:errors="*{maxPeople}"></label>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Rent Type Name</label> <br>
+            <select class="form-control col-6" th:field="*{rentType}">
+                <option th:each="cusType:${rentTypeList}" th:text="${cusType.name}"
+                        th:value="${cusType.id}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Services Type Name</label> <br>
+            <select class="form-control col-6" th:field="*{servicesType}">
+                <option th:each="cusType:${servicesTypeList}" th:text="${cusType.name}"
+                        th:value="${cusType.id}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Standard Room</label>
+            <input class="form-control col-6" type="text" th:field="*{standardRoom}"/>
+            <label style="color: red" th:if="${#fields.hasErrors('standardRoom')}" th:errors="*{standardRoom}"></label>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Description</label>
+            <input class="form-control col-6" type="text" th:field="*{description}"/>
+            <label style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></label>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Pool Area</label>
+            <input class="form-control col-6" type="text" th:field="*{poolArea}"/>
+            <label style="color: red" th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></label>
+        </div>
+        <div class="form-group">
+            <label class="col-form-label col-2">Number Of Floors</label>
+            <input class="form-control col-6" type="text" th:field="*{numberOfFloors}"/>
+            <label style="color: red" th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></label>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-outline-success" value="Create"/>
+        <a th:href="@{/services}" class="btn btn-outline-primary">Back</a>
+    </form>
+</div>
+</body>
+</html>

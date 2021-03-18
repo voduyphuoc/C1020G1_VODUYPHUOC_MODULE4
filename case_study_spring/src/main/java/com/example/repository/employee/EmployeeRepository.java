@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,String> {
-//    @Query("select e from employee e where concat(e.name,e.address,e.id) like %?1%")
+    @Query("select e from employee e where concat(e.division.name,e.educationDegree.name,e.position.name) like %?1%")
     Page<Employee> findAllByNameContaining(String name, Pageable pageable);
 }

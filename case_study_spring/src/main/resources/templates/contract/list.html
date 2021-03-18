@@ -10,8 +10,11 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search"
                    th:name="keyword">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" value="clear" onclick="clearContract()">
+                Clear
+            </button>
         </form>
-        <h1 class="text-center"><a th:href="@{/contract}">Contract List</a></h1>
+<!--        <h1 class="text-center"><a th:href="@{/contract}">Contract List</a></h1>-->
         <button><a th:href="@{/contract/create}">Create New Contract</a></button>
         <h2 th:if="${message}" th:text="${message}" style="color: green"></h2>
         <h2 th:if="${message1}" th:text="${message1}" style="color: red"></h2>
@@ -41,16 +44,15 @@
                     <td th:text="${contract.customer.getName()}"></td>
                     <td><a th:href="@{/contract/{id}/update(id=${contract.id})}"
                            class="btn btn-outline-primary">Edit</a>
-                    </td>
-                    <td><a th:href="@{/contract/{id}/delete(id=${contract.id})}"
-                           class="btn btn-outline-danger">Delete</a>
+                    <td>
+                        <a data-toggle="modal" data-target="#modalDelete"
+                           th:data-id="${contract.getId()}" th:data-ids="${contract.id}"
+                           onclick="getId(this.getAttribute('data-id'))" class="btn btn-danger delete">Delete</a>
                     </td>
                 </tr>
             </th:block>
             </tbody>
         </table>
-
-
         <div>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -72,5 +74,37 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form th:action="@{/contract/delete}" method="get">
+                <input type="hidden" id="deleteId" name="id">
+                <div class="modal-body" id="modalDeleteCustomer">
+                    <h3>Do you want to delete customer: </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+                    <button type="submit" class="btn btn-primary">ok</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function getId(id) {
+        $("#modalDeleteCustomer").html("ban co muon xoa " + id);
+        $('#deleteId').val(id)
+    }
+
+    function clearContract() {
+        window.location = '/contract';
+    }
+</script>
 </body>
 </html>

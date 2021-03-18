@@ -52,7 +52,8 @@ public class ContractController {
     }
 
     @PostMapping("/save")
-    public String createContract(@Valid @ModelAttribute Contract contract, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+    public String createContract(@Valid @ModelAttribute Contract contract, BindingResult bindingResult,
+                                 RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("customerList", customerService.findAll());
             model.addAttribute("employeeList", employeeService.findAll());
@@ -77,7 +78,6 @@ public class ContractController {
                 return "contract/create";
             }
         }
-
     }
 
     @GetMapping("/{id}/view")

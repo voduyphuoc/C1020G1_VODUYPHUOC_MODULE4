@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Contract Detail information</h1>
+<p th:text="'Contract Detail ID: '+ ${contractDetail.id}"></p>
+<h3>Contract</h3>
+<p th:text="'contract ID: ' + ${contractDetail.contract.id}"></p>
+<p th:text="'contract start date: ' + ${contractDetail.contract.startDate}"></p>
+<p th:text="'contract end date: ' + ${contractDetail.contract.endDate}"></p>
+<p th:text="'contract deposit: ' + ${contractDetail.contract.deposit}"></p>
+<p th:text="'contract total money: ' + ${contractDetail.contract.totalMoney}"></p>
+
+<h3>Name Employee</h3>
+<p th:text="'Employee ID: ' + ${contractDetail.contract.employee.id}"></p>
+<p th:text="'Employee name: ' + ${contractDetail.contract.employee.name}"></p>
+<p th:text="'Employee position: ' + ${contractDetail.contract.employee.position.name}"></p>
+<p th:text="'Employee education degree: ' + ${contractDetail.contract.employee.educationDegree.name}"></p>
+<p th:text="'Employee Division: ' + ${contractDetail.contract.employee.division.name}"></p>
+<p th:text="'contract ID: ' + ${contractDetail.contract.employee.id}"></p>
+
+<h1>Name Customer</h1>
+<p th:text="'Customer ID: ' + ${contractDetail.contract.customer.id}"></p>
+<p th:text="'Customer NAME: ' + ${contractDetail.contract.customer.name}"></p>
+<p th:text="'Customer Phone: ' + ${contractDetail.contract.customer.phone}"></p>
+
+<h3>Name CustomerType</h3>
+<p th:text="'Customer Name: ' + ${contractDetail.contract.customer.customerType.name}"></p>
+
+<a th:href="@{/contractDetail}" class="btn btn-outline-primary">Back</a>
+</body>
+</html>

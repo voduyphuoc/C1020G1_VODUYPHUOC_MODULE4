@@ -68,7 +68,6 @@ public class CustomerController {
                 return "customer/create";
             }
         }
-
     }
 
     @GetMapping("/{id}/view")
@@ -112,7 +111,7 @@ public class CustomerController {
                 return "redirect:/customer/list";
             } else {
                 model.addAttribute("customerTypeList", customerTypeService.findAll());
-                model.addAttribute("messageId", "id không tồn tại !!!");
+                model.addAttribute("messageId", "khong duoc edit id");
                 return "/customer/edit";
             }
         }

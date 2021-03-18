@@ -6,8 +6,9 @@ import javax.validation.constraints.Pattern;
 @Entity
 public class ContractDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Pattern(regexp = "^(CTDT-)\\d{4}$", message = "Id contract detail Format Exception (CTDT-XXXX) !!!")
+    private String id;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "contract_id",referencedColumnName = "id")
@@ -24,11 +25,11 @@ public class ContractDetail {
     public ContractDetail(String quantity) {
         this.quantity = quantity;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

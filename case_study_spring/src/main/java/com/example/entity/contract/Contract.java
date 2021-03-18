@@ -3,6 +3,7 @@ package com.example.entity.contract;
 
 import com.example.entity.customer.Customer;
 import com.example.entity.employee.Employee;
+import com.example.entity.service.Services;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -10,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 
-@Entity
+@Entity(name = "contract")
 public class Contract {
     @Id
     @Pattern(regexp = "^(CT-)\\d{4}$", message = "Id Customer Format Exception (CT-XXXX) !!!")

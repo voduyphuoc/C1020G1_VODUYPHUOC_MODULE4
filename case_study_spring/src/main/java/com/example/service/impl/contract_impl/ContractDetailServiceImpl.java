@@ -4,6 +4,8 @@ import com.example.entity.contract.ContractDetail;
 import com.example.repository.contract.ContractDetailRepository;
 import com.example.service.contract.ContractDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,16 @@ import java.util.List;
 public class ContractDetailServiceImpl implements ContractDetailService {
     @Autowired
     private ContractDetailRepository contractDetailRepository;
+
+    @Override
+    public Page<ContractDetail> findAllInputText(String keyword, Pageable pageable) {
+        return contractDetailRepository.findAllInputText(keyword,pageable);
+    }
+
+    @Override
+    public Page<ContractDetail> findAll(Pageable pageable) {
+        return contractDetailRepository.findAll(pageable);
+    }
 
     @Override
     public List<ContractDetail> findAll() {
@@ -24,12 +36,12 @@ public class ContractDetailServiceImpl implements ContractDetailService {
     }
 
     @Override
-    public ContractDetail findById(Integer id) {
+    public ContractDetail findById(String id) {
         return contractDetailRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void remove(Integer id) {
+    public void remove(String id) {
         contractDetailRepository.deleteById(id);
     }
 }
