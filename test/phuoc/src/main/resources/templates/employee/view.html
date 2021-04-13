@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+<h1>Employee International</h1>
+<p th:text="'Id : ' + ${employee.id}"></p>
+<p th:text="'name : ' + ${employee.name}"></p>
+<p th:text="'birthday: ' + ${employee.birthday}"></p>
+<p th:text="'idCard: ' + ${employee.idCard}"></p>
+<p th:text="'salary: ' + ${employee.salary}"></p>
+<p th:text="'phone: ' + ${employee.phone}"></p>
+<p th:text="'email: ' + ${employee.email}"></p>
+<p th:text="'address: ' + ${employee.address}"></p>
+<p th:text="'Position: ' + ${employee.position.name}"></p>
+<p th:text="'educationDegree: ' + ${employee.educationDegree.name}"></p>
+<p th:text="'division: ' + ${employee.division.name}"></p>
+<a th:href="@{/employee}" class="btn btn-outline-primary">Back</a>
+</body>
+</html>

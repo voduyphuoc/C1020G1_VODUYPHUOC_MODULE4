@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/layout::head}">
+</head>
+<body>
+<div th:insert="~{layout::content}"></div>
+<div id="content">
+    <div class="container">
+        <h1 class="text-center">Attach Service</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Unit</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="at : ${attachServiceList}">
+                <tr>
+                    <td th:text="${at.id}"></td>
+                    <td th:text="${at.name}"></td>
+                    <td th:text="${at.cost}"></td>
+                    <td th:text="${at.unit}"></td>
+                    <td th:text="${at.status}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

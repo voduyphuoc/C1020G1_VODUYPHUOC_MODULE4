@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/layout::head}">
+</head>
+<body>
+<div th:insert="~{layout::content}"></div>
+<div id="content">
+    <div class="container">
+        <form style="float: right" th:action="@{/contractDetail/list}" class="form-inline my-2 my-lg-0" method="get">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search by name" aria-label="Search"
+                   th:name="keyword">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" value="clear" onclick="clearContractDetail()">
+                Clear
+            </button>
+        </form>
+        <!--        <h1 class="text-center"><a th:href="@{/contract}">Contract List</a></h1>-->
+        <button><a th:href="@{/contractDetail/create}">Create New Contract</a></button>
+        <h2 th:if="${message}" th:text="${message}" style="color: green"></h2>
+        <h2 th:if="${message1}" th:text="${message1}" style="color: red"></h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Contract Detail Id</th>
+                <th>Contract Id</th>
+                <th>Attach Service Id</th>
+                <th>Quantity</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>View</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="contractDetail : ${contractDetailList}">
+                <tr>
+                    <td th:text="${contractDetail.id}"></td>
+                    <td th:text="${contractDetail.contract.id}"></td>
+                    <td th:text="${contractDetail.attachService.id}"></td>
+                    <td th:text="${contractDetail.quantity}"></td>
+                    <td><a th:href="@{/contractDetail/{id}/update(id=${contractDetail.id})}"
+                           class="btn btn-outline-primary">Edit</a>
+                    <td>
+                        <a data-toggle="modal" data-target="#modalDelete"
+                           th:data-id="${contractDetail.getId()}" th:data-ids="${contractDetail.id}"
+                           onclick="getId(this.getAttribute('data-id'))" class="btn btn-danger delete">Delete</a>
+                    </td>
+                    <td><a th:href="@{/contractDetail/{id}/view(id=${contractDetail.id})}"
+                           class="btn btn-outline-primary">view</a>
+                    <td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" th:if="${contractDetailList.hasPrevious()}">
+                        <a class="page-link"
+                           th:href="@{/contractDetail(page=${contractDetailList.number - 1},keyword = ${search},size=${contractDetailList.size})}">Previous</a>
+                    </li>
+                    <th:block th:each="i: ${#numbers.sequence(0, contractDetailList.totalPages - 1)}">
+                        <li class="page-link" th:if="${contractDetailList.number == i}">[[${i}+1]]</li>
+                        <li class="page-link" th:unless="${contractDetailList.number == i}">
+                            <a th:href="@{/contractDetail(page=${i},size=${contractDetailList.size},keyword = ${search})}">[[${i}+1]]</a>
+                    </th:block>
+                    <li class="page-item" th:if="${contractDetailList.hasNext()}">
+                        <a class="page-link"
+                           th:href="@{/contractDetail(page=${contractDetailList.number+1},keyword = ${search},size=${contractDetailList.size})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete ContractDetail</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form th:action="@{/contractDetail/delete}" method="get">
+                <input type="hidden" id="deleteId" name="id">
+                <div class="modal-body" id="modalDeleteCustomer">
+                    <h3>Do you want to delete customer: </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+                    <button type="submit" class="btn btn-primary">ok</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function getId(id) {
+        $("#modalDeleteCustomer").html("ban co muon xoa " + id);
+        $('#deleteId').val(id)
+    }
+
+    function clearContractDetail() {
+        window.location = '/contractDetail';
+    }
+</script>
+</body>
+</html>
